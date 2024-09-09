@@ -4,13 +4,20 @@ import { Button, Checkbox, Form, Input, Flex, Segmented } from 'antd';
 import Logo from '../assets/worklenz.png'
 import { Space, Typography } from 'antd';
 import googleIcon from '../assets/google.png'
+import { useNavigate } from "react-router-dom";
 
 const { Text, Link, Title } = Typography;
 
 const Reset_Password = () => {
+    const navigate = useNavigate()
+
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
     };
+
+    const handleReturnToLogin = () => {
+        navigate("/")
+    }
     return (
         <div>
             <Flex
@@ -61,7 +68,7 @@ const Reset_Password = () => {
                                     <Text style={{ fontSize: '16px', color: "white" }}>Reset Password</Text>
                                 </Button>
                                 <Flex justify="center">OR</Flex>
-                                <Button block size="large" style={{ borderRadius: "4px" }}>
+                                <Button block size="large" style={{ borderRadius: "4px" }} onClick={handleReturnToLogin}>
                                     <Text style={{ fontSize: '16px' }}>Return to Login</Text>
                                 </Button>
                             </Flex>
