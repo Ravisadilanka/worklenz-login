@@ -7,7 +7,11 @@ import googleIcon from '../assets/google.png';
 
 const { Text } = Typography;
 
-const Signup: React.FC = () => {
+interface SignupProps {
+    isDarkMode: boolean
+}
+
+const Signup: React.FC<SignupProps> = ({ isDarkMode }) => {
     const onFinish = (values: { name: string; email: string; password: string }) => {
         console.log('Received values of form: ', values);
     };
@@ -28,7 +32,7 @@ const Signup: React.FC = () => {
                     lg={8}
                     xl={7}
                     style={{
-                        backgroundColor: 'white',
+                        backgroundColor: `${isDarkMode ? '#141414' : 'white'}`,
                         padding: '40px',
                         borderRadius: '4px',
                     }}

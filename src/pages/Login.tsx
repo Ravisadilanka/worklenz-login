@@ -3,10 +3,16 @@ import { LockOutlined, UserOutlined, EyeOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Row, Col, Typography } from 'antd';
 import Logo from '../assets/worklenz.png';
 import googleIcon from '../assets/google.png';
+import useToken from "antd/es/theme/useToken";
 
 const { Text } = Typography;
 
-const Login: React.FC = () => {
+interface LoginProps {
+    isDarkMode: boolean;
+  }
+
+const Login: React.FC<LoginProps> = ({ isDarkMode }) => {
+    const [token] = useToken();
     const onFinish = (values: { email: string; password: string; remember: boolean }) => {
         console.log('Received values of form: ', values);
     };
@@ -27,7 +33,7 @@ const Login: React.FC = () => {
                     lg={8}
                     xl={7}
                     style={{
-                        backgroundColor: 'white',
+                        backgroundColor: `${isDarkMode ? '#141414' : 'white'}`,
                         padding: '40px',
                         borderRadius: '4px',
                     }}

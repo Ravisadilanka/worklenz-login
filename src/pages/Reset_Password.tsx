@@ -8,7 +8,11 @@ import { useNavigate } from "react-router-dom";
 
 const { Text } = Typography;
 
-const Reset_Password: React.FC = () => {
+interface ResetProps {
+    isDarkMode: boolean;
+  }
+
+const Reset_Password: React.FC<ResetProps> = ({ isDarkMode }) => {
     const navigate = useNavigate();
 
     const onFinish = (values: { email: string }) => {
@@ -35,7 +39,7 @@ const Reset_Password: React.FC = () => {
                     lg={8}
                     xl={7}
                     style={{
-                        backgroundColor: 'white',
+                        backgroundColor: `${isDarkMode ? '#141414' : 'white'}`,
                         padding: '40px',
                         borderRadius: '4px',
                     }}
