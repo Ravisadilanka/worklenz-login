@@ -1,6 +1,6 @@
 import React from "react";
 import { LockOutlined, UserOutlined, EyeOutlined, MailOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, Flex, Segmented } from 'antd';
+import { Button, Checkbox, Form, Input, Flex, Segmented, Row, Col } from 'antd';
 import Logo from '../assets/worklenz.png'
 import { Space, Typography } from 'antd';
 import googleIcon from '../assets/google.png'
@@ -13,30 +13,30 @@ const Signup = () => {
     };
     return (
         <div>
-            <Flex
+            <Row
+                justify="center"
+                align="middle"
                 style={{
                     height: '100vh',
-                    position: 'relative',
                 }}
             >
-                <Flex
-                    justify="center"
-                    align="center"
-                    vertical
-                    gap={6}
+                <Col
+                    xs={22}
+                    sm={16}
+                    md={12}
+                    lg={8}
+                    xl={7}
                     style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
                         backgroundColor: 'white',
-                        padding: '50px',
+                        padding: '40px',
                         borderRadius: '4px',
-                        width: '360px',
                     }}
                 >
-                    <img src={Logo} alt="Logo" style={{ height: 50 }} />
-                    <Text type="secondary">Create your account.</Text>
+                    <Flex vertical align="center">
+
+                        <img src={Logo} alt="Logo" style={{ height: 50 }} />
+                        <Text type="secondary">Create your account.</Text>
+                    </Flex>
                     <Form
                         labelCol={{ span: 18 }}
                         wrapperCol={{ span: 36 }}
@@ -47,14 +47,14 @@ const Signup = () => {
                         layout="vertical"
                     >
                         <Form.Item
-                        label="Full Name"
+                            label="Full Name"
                             name="name"
                             rules={[{ message: 'Please input your name!' }]}
                         >
                             <Input prefix={<UserOutlined />} placeholder="Enter your full name" style={{ height: '40px', fontSize: '16px' }} />
                         </Form.Item>
                         <Form.Item
-                        label="Email"
+                            label="Email"
                             name="email"
                             rules={[{ message: 'Please input your Email!' }]}
                         >
@@ -63,7 +63,7 @@ const Signup = () => {
                         <Form.Item
                             label="Password"
                             name="password"
-                            rules={[{message: 'Please input your Password!' }]}
+                            rules={[{ message: 'Please input your Password!' }]}
                         >
                             <Input prefix={<LockOutlined />} type="password" placeholder="Enter a strong password" suffix={<EyeOutlined />} style={{ height: '40px', fontSize: '16px' }} />
                             <Text type="secondary">Minimum of 8 characters, with upper and lowercase and a number and a symbol.</Text>
@@ -85,11 +85,11 @@ const Signup = () => {
                             </Flex>
                         </Form.Item>
                         <Form.Item>
-                        <Text>Already have an account? <a href="/">Log in</a></Text>
+                            <Text>Already have an account? <a href="/">Log in</a></Text>
                         </Form.Item>
                     </Form>
-                </Flex>
-            </Flex>
+                </Col>
+            </Row>
         </div>
     );
 };

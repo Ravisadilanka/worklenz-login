@@ -1,6 +1,6 @@
 import React from "react";
 import { LockOutlined, UserOutlined, EyeOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, Flex, Segmented } from 'antd';
+import { Button, Checkbox, Form, Input, Flex, Segmented, Row, Col } from 'antd';
 import Logo from '../assets/worklenz.png'
 import { Space, Typography } from 'antd';
 import googleIcon from '../assets/google.png'
@@ -20,32 +20,29 @@ const Reset_Password = () => {
     }
     return (
         <div>
-            <Flex
+            <Row
+                justify="center"
+                align="middle"
                 style={{
                     height: '100vh',
-                    position: 'relative',
                 }}
             >
-                <Flex
-                    justify="center"
-                    align="center"
-                    vertical
-                    gap={6}
+                <Col
+                    xs={22}
+                    sm={16}
+                    md={12}
+                    lg={8}
+                    xl={7}
                     style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
                         backgroundColor: 'white',
-                        padding: '50px',
+                        padding: '40px',
                         borderRadius: '4px',
-                        width: '360px',
                     }}
                 >
-                    <img src={Logo} alt="Logo" style={{ height: 50 }} />
-                    <Flex justify="center" align="center" style={{textAlign: "center"}}>
+                    <Flex vertical justify="center" align="center" style={{ textAlign: "center", padding: "26px" }} gap={6}>
+                        <img src={Logo} alt="Logo" style={{ height: 50 }} />
 
-                    <Text type="secondary">Please enter your email address. You will receive a link to create a new password via email.</Text>
+                        <Text type="secondary">Please enter your email address. You will receive a link to create a new password via email.</Text>
                     </Flex>
                     <Form
                         labelCol={{ span: 18 }}
@@ -74,8 +71,8 @@ const Reset_Password = () => {
                             </Flex>
                         </Form.Item>
                     </Form>
-                </Flex>
-            </Flex>
+                </Col>
+            </Row>
         </div>
     );
 };
