@@ -5,13 +5,17 @@ import Signup from "./pages/Signup";
 import Reset_Password from "./pages/Reset_Password";
 import { ConfigProvider, Button } from "antd";
 import { theme } from "antd";
-import{ MoonOutlined, SunOutlined} from '@ant-design/icons';
+import { MoonOutlined, SunOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
+import "./i18n"; // Import the i18n configuration
 
 const { darkAlgorithm, defaultAlgorithm } = theme;
 
 const App: React.FC = () => {
+  
   // Initialize theme state with value from localStorage or default to light mode
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false)
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const { i18n } = useTranslation(); // Access the i18n instance to change languages
 
   // Update localStorage and document body background color when theme changes
   useEffect(() => {
@@ -24,33 +28,37 @@ const App: React.FC = () => {
     setIsDarkMode(!isDarkMode);
   };
 
+  // Toggle language between English and French
+  const toggleLanguage = () => {
+    const newLang = i18n.language === "en" ? "fr" : "en";
+    i18n.changeLanguage(newLang);
+  };
+
   return (
     <ConfigProvider
       theme={{
         algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
         token: {
-          colorPrimary: "#1890ff",
           colorBgBase: isDarkMode ? "#141414" : "#FAFAFA",
-          colorTextBase: isDarkMode ? "#ffffff" : "#000000",
         },
       }}
     >
       <BrowserRouter>
-        <Button
-          onClick={toggleTheme}
-          style={{
-            position: 'fixed',
-            top: 20,
-            right: 20,
-            zIndex: 1000,
-          }}
-        >
-          {isDarkMode ? <SunOutlined /> : <MoonOutlined />}
-        </Button>
+        <div style={{ position: "fixed", top: 20, right: 20, zIndex: 1000 }}>
+          <Button onClick={toggleTheme} style={{ marginRight: "10px" }}>
+            {isDarkMode ? <SunOutlined /> : <MoonOutlined />}
+          </Button>
+          <Button onClick={toggleLanguage}>
+            {i18n.language === "en" ? "FR" : "EN"}
+          </Button>
+        </div>
         <Routes>
-          <Route path="/" element={<Login isDarkMode={isDarkMode}/>} />
-          <Route path="/signup" element={<Signup isDarkMode={isDarkMode}/>} />
-          <Route path="/reset-password" element={<Reset_Password isDarkMode={isDarkMode}/>} />
+          <Route path="/" element={<Login isDarkMode={isDarkMode} />} />
+          <Route path="/signup" element={<Signup isDarkMode={isDarkMode} />} />
+          <Route
+            path="/reset-password"
+            element={<Reset_Password isDarkMode={isDarkMode} />}
+          />
         </Routes>
       </BrowserRouter>
     </ConfigProvider>
