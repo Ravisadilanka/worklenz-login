@@ -1,23 +1,24 @@
 import React from "react";
 import { LockOutlined, UserOutlined, EyeOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, Flex, Segmented, Row, Col } from 'antd';
+import { Button, Checkbox, Form, Input, Flex, Row, Col } from 'antd';
 import Logo from '../assets/worklenz.png'
-import { Space, Typography } from 'antd';
+import { Typography } from 'antd';
 import googleIcon from '../assets/google.png'
 import { useNavigate } from "react-router-dom";
 
-const { Text, Link, Title } = Typography;
+const { Text } = Typography;
 
-const Reset_Password = () => {
-    const navigate = useNavigate()
+const Reset_Password: React.FC = () => {
+    const navigate = useNavigate();
 
-    const onFinish = (values) => {
+    const onFinish = (values: { email: string }) => {
         console.log('Received values of form: ', values);
     };
 
     const handleReturnToLogin = () => {
-        navigate("/")
+        navigate("/");
     }
+
     return (
         <div>
             <Row

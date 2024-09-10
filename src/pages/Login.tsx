@@ -1,13 +1,13 @@
 import React from "react";
 import { LockOutlined, UserOutlined, EyeOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, Row, Col, Typography, Flex } from 'antd';
+import { Button, Checkbox, Form, Input, Row, Col, Typography } from 'antd';
 import Logo from '../assets/worklenz.png';
 import googleIcon from '../assets/google.png';
 
-const { Text, Title } = Typography;
+const { Text } = Typography;
 
-const Login = () => {
-    const onFinish = (values) => {
+const Login: React.FC = () => {
+    const onFinish = (values: { email: string; password: string; remember: boolean }) => {
         console.log('Received values of form: ', values);
     };
 
@@ -32,10 +32,10 @@ const Login = () => {
                         borderRadius: '4px',
                     }}
                 >
-                    <Flex vertical align="center" gap={6} style={{ padding: "26px" }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', padding: "26px" }}>
                         <img src={Logo} alt="Logo" style={{ height: 50 }} />
                         <Text type="secondary">Log Into your account.</Text>
-                    </Flex>
+                    </div>
 
                     <Form
                         name="login"
@@ -77,16 +77,16 @@ const Login = () => {
                         </Form.Item>
 
                         <Form.Item>
-                            <Flex vertical gap={4}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                                 <Button block type="primary" htmlType="submit" size="large" style={{ borderRadius: "4px" }}>
                                     <Text style={{ fontSize: '16px', color: "white" }}>Log in</Text>
                                 </Button>
-                                <Flex justify="center">OR</Flex>
+                                <div style={{ textAlign: 'center' }}>OR</div>
                                 <Button block size="large" style={{ borderRadius: "4px" }}>
                                     <img style={{ width: '18px' }} src={googleIcon} alt="google icon" />
                                     <Text style={{ fontSize: '16px' }}>Sign in with Google</Text>
                                 </Button>
-                            </Flex>
+                            </div>
                         </Form.Item>
                         <Form.Item>
                             <Text>Don't have an account? <a href="/signup">Sign Up</a></Text>

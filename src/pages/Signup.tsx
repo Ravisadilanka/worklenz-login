@@ -1,16 +1,17 @@
 import React from "react";
 import { LockOutlined, UserOutlined, EyeOutlined, MailOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, Flex, Segmented, Row, Col } from 'antd';
-import Logo from '../assets/worklenz.png'
-import { Space, Typography } from 'antd';
-import googleIcon from '../assets/google.png'
+import { Button, Form, Input, Flex, Row, Col } from 'antd';
+import Logo from '../assets/worklenz.png';
+import { Typography } from 'antd';
+import googleIcon from '../assets/google.png';
 
-const { Text, Link, Title } = Typography;
+const { Text } = Typography;
 
-const Signup = () => {
-    const onFinish = (values) => {
+const Signup: React.FC = () => {
+    const onFinish = (values: { name: string; email: string; password: string }) => {
         console.log('Received values of form: ', values);
     };
+
     return (
         <div>
             <Row
@@ -33,7 +34,6 @@ const Signup = () => {
                     }}
                 >
                     <Flex vertical align="center">
-
                         <img src={Logo} alt="Logo" style={{ height: 50 }} />
                         <Text type="secondary">Create your account.</Text>
                     </Flex>
@@ -49,21 +49,21 @@ const Signup = () => {
                         <Form.Item
                             label="Full Name"
                             name="name"
-                            rules={[{ message: 'Please input your name!' }]}
+                            rules={[{ required: true, message: 'Please input your name!' }]}
                         >
                             <Input prefix={<UserOutlined />} placeholder="Enter your full name" style={{ height: '40px', fontSize: '16px' }} />
                         </Form.Item>
                         <Form.Item
                             label="Email"
                             name="email"
-                            rules={[{ message: 'Please input your Email!' }]}
+                            rules={[{ required: true, message: 'Please input your Email!' }]}
                         >
                             <Input prefix={<MailOutlined />} placeholder="Enter your email" style={{ height: '40px', fontSize: '16px' }} />
                         </Form.Item>
                         <Form.Item
                             label="Password"
                             name="password"
-                            rules={[{ message: 'Please input your Password!' }]}
+                            rules={[{ required: true, message: 'Please input your Password!' }]}
                         >
                             <Input prefix={<LockOutlined />} type="password" placeholder="Enter a strong password" suffix={<EyeOutlined />} style={{ height: '40px', fontSize: '16px' }} />
                             <Text type="secondary">Minimum of 8 characters, with upper and lowercase and a number and a symbol.</Text>
