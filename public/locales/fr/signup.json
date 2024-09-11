@@ -1,20 +1,4 @@
 {
-    "loginTitle": "Connectez-vous à votre compte.",
-    "loginEmailPlaceholder": "Email",
-    "loginPasswordPlaceholder": "Mot de passe",
-    "loginButton": "Se connecter",
-    "forgotPassword": "Mot de passe oublié?",
-    "rememberMe": "Souviens-toi de moi",
-    "or": "OU",
-    "signInWithGoogle": "Se connecter avec Google",
-    "dontHaveAccount": "Vous n'avez pas de compte?",
-    "signUp": "S'inscrire",
-
-    "forgetPasswordTitle": "Veuillez entrer votre adresse e-mail. Vous recevrez un lien pour créer un nouveau mot de passe par e-mail.",
-    "enterYourEmail": "Entrez votre email",
-    "resetPassword": "Réinitialiser le mot de passe",
-    "returnToLogin": "Retour à la connexion",
-
     "signUpTitle": "Créez votre compte.",
     "fullName": "Nom complet",
     "email": "Email",
@@ -28,8 +12,11 @@
     "termsOfUse": "Conditions d'utilisation",
     "signUpWithGoogle": "S'inscrire avec Google",
     "alreadyHaveAnAccount": "Vous avez déjà un compte?",
-
     "emailRequired": "Veuillez saisir votre adresse e-mail !",
     "passwordRequired": "Veuillez saisir votre mot de passe !",
-    "nameRequired": "Veuillez saisir votre nom !"
+    "nameRequired": "Veuillez saisir votre nom !",
+    "or": "OU",
+    "loginButton": "Se connecter",
+    "signUp": "S'inscrire",
+    "enterYourEmail": "Entrez votre email"
 }

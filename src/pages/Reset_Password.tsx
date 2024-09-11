@@ -14,7 +14,7 @@ interface ResetProps {
 }
 
 const Reset_Password: React.FC<ResetProps> = ({ isDarkMode }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('reset_password');
   const navigate = useNavigate();
 
   const onFinish = (values: { email: string }) => {

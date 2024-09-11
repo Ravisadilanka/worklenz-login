@@ -19,7 +19,7 @@ interface SignupProps {
 }
 
 const Signup: React.FC<SignupProps> = ({ isDarkMode }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('signup');
   const onFinish = (values: {
     name: string;
     email: string;

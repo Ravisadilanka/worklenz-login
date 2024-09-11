@@ -13,7 +13,7 @@ interface LoginProps {
 }
 
 const Login: React.FC<LoginProps> = ({ isDarkMode }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('login');
   const onFinish = (values: {
     email: string;
     password: string;

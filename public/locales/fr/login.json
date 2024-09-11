@@ -1,0 +1,15 @@
+{
+    "loginTitle": "Connectez-vous à votre compte.",
+    "loginEmailPlaceholder": "Email",
+    "loginPasswordPlaceholder": "Mot de passe",
+    "loginButton": "Se connecter",
+    "forgotPassword": "Mot de passe oublié?",
+    "rememberMe": "Souviens-toi de moi",
+    "or": "OU",
+    "signInWithGoogle": "Se connecter avec Google",
+    "dontHaveAccount": "Vous n'avez pas de compte?",
+    "signUp": "S'inscrire",
+    "emailRequired": "Veuillez saisir votre adresse e-mail !",
+    "passwordRequired": "Veuillez saisir votre mot de passe !",
+    "nameRequired": "Veuillez saisir votre nom !"
+}

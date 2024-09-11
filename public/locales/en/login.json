@@ -1,0 +1,15 @@
+{
+    "loginTitle": "Log Into your account.",
+    "loginEmailPlaceholder": "Email",
+    "loginPasswordPlaceholder": "Password",
+    "loginButton": "Log in",
+    "forgotPassword": "Forgot password?",
+    "rememberMe": "Remember me",
+    "or": "OR",
+    "signInWithGoogle": "Sign in with Google",
+    "dontHaveAccount": "Don't have an account?",
+    "signUp": "Sign Up",
+    "emailRequired": "Please input your Email!",
+    "passwordRequired": "Please input your Password!",
+    "nameRequired": "Please input your Name!"
+}
