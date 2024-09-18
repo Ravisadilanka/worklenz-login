@@ -6,14 +6,16 @@ import { Typography } from "antd";
 import googleIcon from "../assets/google.png";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const { Text } = Typography;
 
-interface ResetProps {
-  isDarkMode: boolean;
-}
 
-const Reset_Password: React.FC<ResetProps> = ({ isDarkMode }) => {
+const Reset_Password: React.FC= () => {
+
+  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
+
   const { t } = useTranslation('reset_password');
   const navigate = useNavigate();
 

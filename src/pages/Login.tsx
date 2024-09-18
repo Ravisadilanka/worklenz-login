@@ -5,14 +5,15 @@ import Logo from "../assets/worklenz.png";
 import googleIcon from "../assets/google.png";
 import useToken from "antd/es/theme/useToken";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const { Text } = Typography;
 
-interface LoginProps {
-  isDarkMode: boolean;
-}
+const Login: React.FC = () => {
 
-const Login: React.FC<LoginProps> = ({ isDarkMode }) => {
+  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
+
   const { t } = useTranslation('login');
   const onFinish = (values: {
     email: string;

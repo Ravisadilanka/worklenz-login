@@ -11,14 +11,15 @@ import { Typography } from "antd";
 import googleIcon from "../assets/google.png";
 import { useTranslation } from "react-i18next";
 import FormItem from "antd/es/form/FormItem";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const { Text } = Typography;
 
-interface SignupProps {
-  isDarkMode: boolean;
-}
+const Signup: React.FC= () => {
 
-const Signup: React.FC<SignupProps> = ({ isDarkMode }) => {
+  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
+
   const { t } = useTranslation('signup');
   const onFinish = (values: {
     name: string;
