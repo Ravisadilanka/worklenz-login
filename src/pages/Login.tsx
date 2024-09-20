@@ -8,6 +8,8 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import Recaptcha from "../components/Recaptcha";
+import ThemeButton from "../components/ThemeButton";
+import LanguageButton from "../components/LanguageButton";
 
 const { Text } = Typography;
 
@@ -26,6 +28,10 @@ const Login: React.FC = () => {
 
   return (
     <div>
+       <div style={{ position: "fixed", top: 20, right: 20, zIndex: 1000, display: "flex"}}>
+          <ThemeButton />
+          <LanguageButton />
+        </div>
       <Row
         justify="center"
         align="middle"

@@ -8,15 +8,15 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import ThemeButton from "../components/ThemeButton";
+import LanguageButton from "../components/LanguageButton";
 
 const { Text } = Typography;
 
+const Reset_Password: React.FC = () => {
+  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
 
-const Reset_Password: React.FC= () => {
-
-  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
-
-  const { t } = useTranslation('reset_password');
+  const { t } = useTranslation("reset_password");
   const navigate = useNavigate();
 
   const onFinish = (values: { email: string }) => {
@@ -29,6 +29,18 @@ const Reset_Password: React.FC= () => {
 
   return (
     <div>
+      <div
+        style={{
+          position: "fixed",
+          top: 20,
+          right: 20,
+          zIndex: 1000,
+          display: "flex",
+        }}
+      >
+        <ThemeButton />
+        <LanguageButton />
+      </div>
       <Row
         justify="center"
         align="middle"

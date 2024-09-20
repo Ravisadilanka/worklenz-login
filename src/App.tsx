@@ -13,6 +13,7 @@ import ThemeButton from "./components/ThemeButton";
 import LanguageButton from "./components/LanguageButton";
 import Home from "./pages/Home";
 
+
 const { darkAlgorithm, defaultAlgorithm } = theme;
 
 const App: React.FC = () => {
@@ -36,15 +37,12 @@ const App: React.FC = () => {
       }}
     >
       <BrowserRouter>
-        <div style={{ position: "fixed", top: 20, right: 20, zIndex: 1000, display: "flex"}}>
-          <ThemeButton />
-          <LanguageButton />
-        </div>
+        
         <Routes>
           <Route path="/" element={<Login/>} />
           <Route path="/signup" element={<Signup/>} />
           <Route path="/reset-password" element={<Reset_Password/>}/>
-          <Route path="/home" element={<Home />} />
+            <Route path="/home" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </ConfigProvider>
