@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 import ThemeButton from "./components/ThemeButton";
 import LanguageButton from "./components/LanguageButton";
+import Home from "./pages/Home";
 
 const { darkAlgorithm, defaultAlgorithm } = theme;
 
@@ -42,10 +43,8 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Login/>} />
           <Route path="/signup" element={<Signup/>} />
-          <Route
-            path="/reset-password"
-            element={<Reset_Password/>}
-          />
+          <Route path="/reset-password" element={<Reset_Password/>}/>
+          <Route path="/home" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </ConfigProvider>

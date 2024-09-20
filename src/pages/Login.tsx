@@ -1,12 +1,13 @@
 import React, { useTransition } from "react";
 import { LockOutlined, UserOutlined, EyeOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input, Row, Col, Typography } from "antd";
+import { Button, Checkbox, Form, Input, Row, Col, Typography, Flex } from "antd";
 import Logo from "../assets/worklenz.png";
 import googleIcon from "../assets/google.png";
 import useToken from "antd/es/theme/useToken";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import Recaptcha from "../components/Recaptcha";
 
 const { Text } = Typography;
 
@@ -94,6 +95,10 @@ const Login: React.FC = () => {
                 </Form.Item>
                 <a href="/reset-password">{t("forgotPassword")}</a>
               </Row>
+            </Form.Item>
+            
+            <Form.Item>
+              <Recaptcha />
             </Form.Item>
 
             <Form.Item>
