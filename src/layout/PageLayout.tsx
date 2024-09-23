@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Breadcrumb,
   Button,
@@ -18,7 +18,14 @@ import ThemeButton from "../components/ThemeButton";
 import LanguageButton from "../components/LanguageButton";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-import { BankOutlined,DownOutlined, UsergroupAddOutlined, BellOutlined, QuestionCircleOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  BankOutlined,
+  DownOutlined,
+  UsergroupAddOutlined,
+  BellOutlined,
+  QuestionCircleOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 
 import { Tooltip } from "antd";
 import { useTranslation } from "react-i18next";
@@ -27,7 +34,6 @@ import { t } from "i18next";
 const { Header, Content, Footer } = Layout;
 
 const { Text } = Typography;
-
 
 const items = [
   { key: "1", label: "home" },
@@ -39,16 +45,17 @@ const items = [
 const PageLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
 
-  const { t } = useTranslation("layout")
+  const [hovered, setHovered] = useState(false);
+
+  const { t } = useTranslation("layout");
 
   const {
     token: { borderRadiusLG },
   } = theme.useToken();
 
   const menuProps = {
-    items
+    items,
   };
-  
 
   return (
     <Layout style={{ padding: "0", margin: "0" }}>
@@ -101,43 +108,37 @@ const PageLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               {t("invite")}
             </Button>
           </Tooltip>
-          <Dropdown trigger={['click']}>
-      <Button
-        style={{
-          backgroundColor: "#e6f7ff",
-          borderRadius: '20px', // Rounded corners
-          display: 'flex',
-          alignItems: 'center',
-          color: '#1890ff',
-          height: '40px',
-          border: "none"
-        }}
-        icon={<BankOutlined />}
-      >
-        <strong style={{ marginRight: '8px' }}>Raveesha Dilanka</strong>
-        <DownOutlined style={{ fontWeight: "900"}} />
-
-      </Button>
-    </Dropdown>
-          <Badge count={3} offset={[-8, 5]}>
-          <Tooltip title={t("notifications")}>
-            <Button
-              type="text"
-              icon={<BellOutlined />}       
-            />
+          <Tooltip title={t("switchTeam")}>
+            <Dropdown trigger={["click"]}>
+              <Button
+                style={{
+                  backgroundColor: `${hovered ? "#ccefff" : "#e6f7ff"}`,
+                  borderRadius: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "#1890ff",
+                  height: "40px",
+                  border: "none",
+                }}
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+                icon={<BankOutlined />}
+              >
+                <strong style={{ marginRight: "8px" }}>Raveesha Dilanka</strong>
+                <DownOutlined style={{ fontWeight: "900" }} />
+              </Button>
+            </Dropdown>
           </Tooltip>
+          <Badge count={3} offset={[-8, 5]}>
+            <Tooltip title={t("notifications")}>
+              <Button type="text" icon={<BellOutlined />} />
+            </Tooltip>
           </Badge>
           <Tooltip title={t("help")}>
-            <Button
-              type="text"
-              icon={<QuestionCircleOutlined />}       
-            />
+            <Button type="text" icon={<QuestionCircleOutlined />} />
           </Tooltip>
           <Tooltip title={t("profile")}>
-            <Button
-              type="text"
-              icon={<UserOutlined />}       
-            />
+            <Button type="text" icon={<UserOutlined />} />
           </Tooltip>
           <ThemeButton />
           <LanguageButton />
