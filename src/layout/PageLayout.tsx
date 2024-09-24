@@ -83,6 +83,7 @@ const PageLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               label: t(item.label),
             }))}
             style={{
+              fontWeight: 600,
               minWidth: "480px",
               backgroundColor: `${isDarkMode ? "black" : "white"}`,
               width: "auto",

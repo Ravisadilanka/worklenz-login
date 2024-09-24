@@ -1,0 +1,35 @@
+.ant-table-thead > tr > th, 
+.ant-table-tbody > tr > td {
+  background-color: '';
+  height: 40px !important;
+  border: none !important;
+  padding: 4px 11px !important;
+}
+.custom-select .ant-select-selector {
+    align-items: center !important;
+    height:  22px !important;
+    border: 0 !important;
+    background-color: #a9a9a969 !important;
+    border-radius: 50rem;
+    width: 70px !important;
+    padding: 0 7px !important;
+    align-items: center !important;
+    font-size: 13px !important;
+    /* width: 70, padding: "0 7px", fontSize: "13px" */
+}
+.custom-select .ant-select-arrow{
+    color: black !important;
+    padding-bottom: 8px;
+    font-size: 12px;
+ }
+
+.light-row {
+    background-color: white !important; 
+  }
+  
+  .dark-row {
+    background-color: black !important; 
+  }
+  .custom-card {
+    border: 1px solid #ccc;
+  }

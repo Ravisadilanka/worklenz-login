@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import PageLayout from "../layout/PageLayout";
-import { Dropdown, MenuProps, Typography } from "antd";
+import { Dropdown, MenuProps, Row, Typography } from "antd";
 import { DownOutlined, EditOutlined } from "@ant-design/icons";
-import TimeTitle from "../components/TimeTittle"
+import TimeTitle from "../components/TimeTittle";
 import GreetingTitle from "../components/GreetingTitle";
+import TaskTable from "../components/TaskTable";
 
 const { Title } = Typography;
 
@@ -27,8 +28,8 @@ const Home: React.FC = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            position: "relative",
             width: "100%",
+            marginBottom: "20px",
           }}
         >
           <div
@@ -37,12 +38,18 @@ const Home: React.FC = () => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              flex: 1,
-              gap: "px",
             }}
           >
-            <Title level={3} style={{ fontWeight: "500", display: 'flex'}}>
-              Hi Raveesha,&nbsp;<GreetingTitle />
+            <Title
+              level={3}
+              style={{
+                fontWeight: "500",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              Hi Raveesha,&nbsp;
+              <GreetingTitle />
             </Title>
             <Title
               level={4}
@@ -57,16 +64,19 @@ const Home: React.FC = () => {
               <TimeTitle />
             </Title>
           </div>
-          <div>
-            <Dropdown.Button
-              menu={{ items, onClick: onMenuClick }}
-              icon={<DownOutlined />}
-              type="primary"
-            >
-              <EditOutlined />
-              Create Project
-            </Dropdown.Button>
-          </div>
+        </div>
+        <div style={{ position: "absolute", right: "80px", top: "8rem" }}>
+          <Dropdown.Button
+            menu={{ items, onClick: onMenuClick }}
+            icon={<DownOutlined />}
+            type="primary"
+          >
+            <EditOutlined />
+            Create Project
+          </Dropdown.Button>
+        </div>
+        <div>
+          <TaskTable />
         </div>
       </div>
     </PageLayout>
