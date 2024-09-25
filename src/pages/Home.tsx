@@ -1,10 +1,11 @@
 import React from "react";
 import PageLayout from "../layout/PageLayout";
-import { Dropdown, MenuProps, Row, Typography } from "antd";
+import { Col, Dropdown, MenuProps, Row, Typography } from "antd";
 import { DownOutlined, EditOutlined } from "@ant-design/icons";
 import TimeTitle from "../components/TimeTittle";
 import GreetingTitle from "../components/GreetingTitle";
 import TaskTable from "../components/TaskTable";
+import TodoList from "../components/TodoList";
 
 const { Title } = Typography;
 
@@ -75,8 +76,13 @@ const Home: React.FC = () => {
             Create Project
           </Dropdown.Button>
         </div>
-        <div>
-          <TaskTable />
+        <div style={{display: 'flex'}}>
+          <div style={{ width: '66%', paddingRight: '11px'}}>
+            <TaskTable />
+          </div>
+          <div style={{width: '34%', paddingLeft: '11px'}}>
+            <TodoList />
+          </div>
         </div>
       </div>
     </PageLayout>

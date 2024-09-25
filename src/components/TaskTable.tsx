@@ -87,7 +87,7 @@ const columns: TableColumnsType<DataType> = [
                 width: "6px",
                 height: "6px",
                 borderRadius: "50%",
-                backgroundColor: "#70a6f3", // Different color for different statuses
+                backgroundColor: "#70a6f3",
                 display: "inline-block",
               }}
             ></span>
@@ -110,7 +110,7 @@ const columns: TableColumnsType<DataType> = [
                 width: "6px",
                 height: "6px",
                 borderRadius: "50%",
-                backgroundColor: "#70a6f3", // Color for "Done" status
+                backgroundColor: "#70a6f3", 
                 display: "inline-block",
               }}
             ></span>
@@ -163,8 +163,6 @@ const TaskTable: React.FC = () => {
   ];
   return (
     <div>
-      <Row gutter={16}>
-        <Col span={16}>
           <Card
            className={isDarkMode ? 'custom-card' : ''}
             title={
@@ -223,8 +221,6 @@ const TaskTable: React.FC = () => {
               rowClassName={() => (isDarkMode ? 'dark-row' : 'light-row')}
             />
           </Card>
-        </Col>
-      </Row>
     </div>
   );
 };
