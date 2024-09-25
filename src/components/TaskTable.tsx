@@ -136,7 +136,7 @@ const columns: TableColumnsType<DataType> = [
 const data = [
   {
     key: "1",
-    task: "Task 01",
+    task: "test 01",
     project: "Project 01",
     status: "Status",
     dueDate: new Date("2024-07-15"),

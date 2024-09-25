@@ -6,6 +6,7 @@ import TimeTitle from "../components/TimeTittle";
 import GreetingTitle from "../components/GreetingTitle";
 import TaskTable from "../components/TaskTable";
 import TodoList from "../components/TodoList";
+import ProjectsCard from "../components/ProjectsCard";
 
 const { Title } = Typography;
 
@@ -82,6 +83,7 @@ const Home: React.FC = () => {
           </div>
           <div style={{width: '34%', paddingLeft: '11px'}}>
             <TodoList />
+            <ProjectsCard />
           </div>
         </div>
       </div>
