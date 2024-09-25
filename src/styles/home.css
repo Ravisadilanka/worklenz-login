@@ -1,0 +1,23 @@
+@media (max-width: 1000px) {
+    .body-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+    .tasktable-container{
+        width: 100% !important;
+        padding-left: 11px;
+        padding-right: 0 !important;
+    }
+    .todolist-project-container {
+        width: 100% !important;
+    }
+    .create-project-button {
+        position: relative !important;
+        left: 35% ;
+        top: 0 !important;
+        padding-bottom: 20px;
+        /* position: "relative",left: "35%",  */
+    }
+}

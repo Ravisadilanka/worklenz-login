@@ -20,8 +20,8 @@ const SideDrawer = () => {
       style={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
         gap: "20px",
       }}
     >
@@ -35,6 +35,7 @@ const SideDrawer = () => {
             display: "flex",
             alignItems: "center",
             gap: "8px",
+            width: "195px"
           }}
         >
           {t("invite")}

@@ -3,4 +3,6 @@
 body{
   font-family: 'Inter', sans-serif !important;
   background-color: #FAFAFA;
+  height: 100%;
+  width: 100vw;
 }
