@@ -1,0 +1,10 @@
+@media (max-width: 1000px) {
+    .right-container {
+        display: none !important;
+    }
+}
+@media (min-width: 1000px) {
+    .sidedrawer {
+        display: none !important;
+    }
+}

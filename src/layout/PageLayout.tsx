@@ -12,6 +12,9 @@ import {
   Dropdown,
   Space,
   Select,
+  Row,
+  Col,
+  Drawer,
 } from "antd";
 import logo from "../assets/worklenz.png";
 import ThemeButton from "../components/ThemeButton";
@@ -25,11 +28,14 @@ import {
   BellOutlined,
   QuestionCircleOutlined,
   UserOutlined,
+  MenuOutlined,
 } from "@ant-design/icons";
+import '../styles/layout.css'
 
 import { Tooltip } from "antd";
 import { useTranslation } from "react-i18next";
 import { t } from "i18next";
+import SideDrawer from "../components/SideDrawer";
 
 const { Header, Content, Footer } = Layout;
 
@@ -49,6 +55,16 @@ const PageLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   const { t } = useTranslation("layout");
 
+  const [open, setOpen] = useState(false);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
+
   const {
     token: { borderRadiusLG },
   } = theme.useToken();
@@ -59,6 +75,7 @@ const PageLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <Layout style={{ padding: "0", margin: "0" }}>
+      <Col>
       <Header
         style={{
           position: "sticky",
@@ -89,11 +106,9 @@ const PageLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               width: "auto",
             }}
           />
-        </div>
-
-        <div style={{ flex: 1 }}></div>
-
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+        </div>       
+        <Col xs={0} sm={0} md={0} lg={24} style={{display: "flex", alignItems: "center", gap: "16px", position: 'absolute', right: '40px'}} >
+        <div className="right-container" style={{display: "flex", alignItems: "center", gap: "16px"}}>
           <Tooltip title={t("addTeamMember")}>
             <Button
               type="dashed"
@@ -141,10 +156,21 @@ const PageLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <Tooltip title={t("profile")}>
             <Button type="text" icon={<UserOutlined />} />
           </Tooltip>
-          <ThemeButton />
-          <LanguageButton />
+          {/* <ThemeButton />
+          <LanguageButton /> */}
         </div>
+        <div className="sidedrawer">
+        <Button onClick={showDrawer}>
+        <MenuOutlined />
+      </Button>
+      <Drawer title="Menu" onClose={onClose} open={open}>
+        <SideDrawer />
+      </Drawer>
+        </div>
+        </Col>
+
       </Header>
+      </Col>
 
       <Content>
         <div
