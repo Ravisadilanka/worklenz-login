@@ -12,11 +12,11 @@ import {
 } from "antd";
 import React from "react";
 import { SyncOutlined } from "@ant-design/icons";
-import "../styles/TableStyles.css";
+import "../../styles/TableStyles.css";
 import { Option } from "antd/es/mentions";
 import { useSelector } from "react-redux";
 import { stat } from "fs";
-import { RootState } from "../redux/store";
+import { RootState } from "../../redux/store";
 
 const handleChange = (value: string) => {
   console.log(`selected ${value}`);
@@ -54,7 +54,7 @@ const columns: TableColumnsType<DataType> = [
               fontSize: "13px",
               display: "flex",
               gap: "2px",
-              justifyContent: 'center',
+              justifyContent: "center",
               alignItems: "center",
               textAlign: "center",
             }}
@@ -77,7 +77,7 @@ const columns: TableColumnsType<DataType> = [
               fontSize: "13px",
               display: "flex",
               gap: "4px",
-              justifyContent: 'center',
+              justifyContent: "center",
               alignItems: "center",
               textAlign: "center",
             }}
@@ -100,7 +100,7 @@ const columns: TableColumnsType<DataType> = [
               fontSize: "13px",
               display: "flex",
               gap: "4px",
-              justifyContent: 'center',
+              justifyContent: "center",
               alignItems: "center",
               textAlign: "center",
             }}
@@ -110,7 +110,7 @@ const columns: TableColumnsType<DataType> = [
                 width: "6px",
                 height: "6px",
                 borderRadius: "50%",
-                backgroundColor: "#70a6f3", 
+                backgroundColor: "#70a6f3",
                 display: "inline-block",
               }}
             ></span>
@@ -120,7 +120,7 @@ const columns: TableColumnsType<DataType> = [
       </Select>
     ),
   },
-  
+
   {
     title: "Due Date",
     dataIndex: "dueDate",
@@ -151,8 +151,7 @@ const data = [
 ];
 
 const TaskTable: React.FC = () => {
-
-    const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
+  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
 
   const items = [
     { key: "1", label: "All" },
@@ -163,64 +162,68 @@ const TaskTable: React.FC = () => {
   ];
   return (
     <div>
-          <Card
-           className={isDarkMode ? 'custom-card' : ''}
-            title={
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "10px" }}
-              >
-                <p>Tasks</p>
-                <Select
-                  defaultValue="assigned to me"
-                  style={{ width: "142px", backgroundColor: `${isDarkMode ? 'black' : 'white'}` }}
-                  onChange={handleChange}
-                  options={[
-                    { value: "assigned to me", label: "assigned to me" },
-                    { value: "assigned by me", label: "assigned by me" },
-                  ]}
-                />
-              </div>
-            }
-            bordered={false}
-            style={{
-              backgroundColor: `${isDarkMode ? 'black' : 'white'}`,
-              boxShadow: "#7a7a7a26 0 5px 16px",
-            }}
-            extra={
-              <div style={{ display: "flex", gap: "10px" }}>
-                <Button
-                  style={{
-                    width: "32px",
-                    borderRadius: "50%",
-                    backgroundColor: `${isDarkMode ? 'black' : 'white'}`,
-                  }}
-                >
-                  <SyncOutlined />
-                </Button>
-                <Segmented<string>
-                  options={["List", "Calendar"]}
-                  onChange={(value) => {
-                    console.log(value);
-                  }}
-                />
-              </div>
-            }
-          >
-            <Tabs
-              defaultActiveKey="1"
-              type="card"
-              items={items.map((item) => ({
-                ...item,
-              }))}
+      <Card
+        className={isDarkMode ? "custom-card" : ""}
+        title={
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <p>Tasks</p>
+            <Select
+              defaultValue="assigned to me"
+              style={{
+                width: "142px",
+                backgroundColor: `${isDarkMode ? "black" : "white"}`,
+              }}
+              onChange={handleChange}
+              options={[
+                { value: "assigned to me", label: "assigned to me" },
+                { value: "assigned by me", label: "assigned by me" },
+              ]}
             />
-            <Input placeholder="+ Add Task" style={{ width: "250px", marginBottom: '15px'}} />
-            <Table<DataType>
-              columns={columns}
-              dataSource={data}
-              pagination={false}
-              rowClassName={() => (isDarkMode ? 'dark-row' : 'light-row')}
+          </div>
+        }
+        bordered={false}
+        style={{
+          backgroundColor: `${isDarkMode ? "black" : "white"}`,
+          boxShadow: "#7a7a7a26 0 5px 16px",
+        }}
+        extra={
+          <div style={{ display: "flex", gap: "10px" }}>
+            <Button
+              style={{
+                width: "32px",
+                borderRadius: "50%",
+                backgroundColor: `${isDarkMode ? "black" : "white"}`,
+              }}
+            >
+              <SyncOutlined />
+            </Button>
+            <Segmented<string>
+              options={["List", "Calendar"]}
+              onChange={(value) => {
+                console.log(value);
+              }}
             />
-          </Card>
+          </div>
+        }
+      >
+        <Tabs
+          defaultActiveKey="1"
+          type="card"
+          items={items.map((item) => ({
+            ...item,
+          }))}
+        />
+        <Input
+          placeholder="+ Add Task"
+          style={{ width: "250px", marginBottom: "15px" }}
+        />
+        <Table<DataType>
+          columns={columns}
+          dataSource={data}
+          pagination={false}
+          rowClassName={() => (isDarkMode ? "dark-row" : "light-row")}
+        />
+      </Card>
     </div>
   );
 };

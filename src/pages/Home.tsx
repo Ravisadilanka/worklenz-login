@@ -1,24 +1,31 @@
 import React, { useState } from "react";
 import PageLayout from "../layout/PageLayout";
-import { Col, Dropdown, MenuProps, Row, Typography } from "antd";
+import { Col, Drawer, Dropdown, MenuProps, Row, Typography } from "antd";
 import { DownOutlined, EditOutlined } from "@ant-design/icons";
-import TimeTitle from "../components/TimeTittle";
-import GreetingTitle from "../components/GreetingTitle";
-import TaskTable from "../components/TaskTable";
-import TodoList from "../components/TodoList";
-import ProjectsCard from "../components/ProjectsCard";
+import TimeTitle from "../components/home/TimeTittle";
+import GreetingTitle from "../components/home/GreetingTitle";
+import TaskTable from "../components/home/TaskTable";
+import TodoList from "../components/home/TodoList";
+import ProjectsCard from "../components/home/ProjectsCard";
 import "../styles/home.css";
+import CreateProjectDrawer from "../components/home/CreateProjectDrawer";
 
 const { Title } = Typography;
 
 const Home: React.FC = () => {
+  const [open, setOpen] = useState(false);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
+
   const onMenuClick: MenuProps["onClick"] = (e) => {
     console.log("click", e);
   };
-
-  const [isMobileView, setIsMobileView] = useState(false);
-
-  
 
   const items = [
     {
@@ -72,21 +79,34 @@ const Home: React.FC = () => {
             </Title>
           </div>
         </div>
-        <div style={{ position: "absolute", right: "80px", top: "8rem" }} className="create-project-button">
+        <div
+          style={{ position: "absolute", right: "80px", top: "8rem" }}
+          className="create-project-button"
+        >
           <Dropdown.Button
             menu={{ items, onClick: onMenuClick }}
             icon={<DownOutlined />}
             type="primary"
+            onClick={showDrawer}
           >
+            <Drawer title="Unread Notifications" onClose={onClose} open={open}>
+              <CreateProjectDrawer />
+            </Drawer>
             <EditOutlined />
             Create Project
           </Dropdown.Button>
         </div>
-        <div style={{display: 'flex'}} className="body-container">
-          <div style={{ width: '66%', paddingRight: '11px'}} className="tasktable-container">
+        <div style={{ display: "flex" }} className="body-container">
+          <div
+            style={{ width: "66%", paddingRight: "11px" }}
+            className="tasktable-container"
+          >
             <TaskTable />
           </div>
-          <div style={{width: '34%', paddingLeft: '11px'}} className="todolist-project-container">
+          <div
+            style={{ width: "34%", paddingLeft: "11px" }}
+            className="todolist-project-container"
+          >
             <TodoList />
             <ProjectsCard />
           </div>

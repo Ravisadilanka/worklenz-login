@@ -33,3 +33,9 @@
   .custom-card {
     border: 1px solid #ccc;
   }
+  .ant-tabs-tab-active{
+    background-color: white !important;
+  }
+  .ant-tabs-tab:hover{
+    background-color: #f0f0f0 !important;
+  }
