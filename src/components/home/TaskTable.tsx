@@ -1,5 +1,6 @@
 import {
   Button,
+  Calendar,
   Card,
   Col,
   Input,
@@ -10,13 +11,14 @@ import {
   TableColumnsType,
   Tabs,
 } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SyncOutlined } from "@ant-design/icons";
 import "../../styles/TableStyles.css";
 import { Option } from "antd/es/mentions";
 import { useSelector } from "react-redux";
 import { stat } from "fs";
 import { RootState } from "../../redux/store";
+import '../../styles/taskTable.css'
 
 const handleChange = (value: string) => {
   console.log(`selected ${value}`);
@@ -152,6 +154,23 @@ const data = [
 
 const TaskTable: React.FC = () => {
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
+  const [isCalenderVisible, setIsCalenderVisible] = useState<boolean>(false);
+  const [isSpinning, setIsSpinning] = useState<boolean>(false);
+  const [activeTab, setActiveTab] = useState<string>('1');
+
+  const handleCalender = () => {
+    setIsSpinning(true)
+    setIsCalenderVisible(!isCalenderVisible);
+  };
+
+  useEffect(() => {
+    if (isSpinning) {
+      setTimeout(() => {
+        setIsSpinning(false);
+      }, 500);
+    }
+
+  }, [isCalenderVisible, isSpinning])
 
   const items = [
     { key: "1", label: "All" },
@@ -195,34 +214,41 @@ const TaskTable: React.FC = () => {
                 backgroundColor: `${isDarkMode ? "black" : "white"}`,
               }}
             >
-              <SyncOutlined />
+              <SyncOutlined spin={isSpinning}/>
             </Button>
             <Segmented<string>
               options={["List", "Calendar"]}
-              onChange={(value) => {
-                console.log(value);
-              }}
+              onChange={handleCalender}
             />
           </div>
         }
       >
-        <Tabs
-          defaultActiveKey="1"
-          type="card"
-          items={items.map((item) => ({
-            ...item,
-          }))}
-        />
-        <Input
-          placeholder="+ Add Task"
-          style={{ width: "250px", marginBottom: "15px" }}
-        />
-        <Table<DataType>
-          columns={columns}
-          dataSource={data}
-          pagination={false}
-          rowClassName={() => (isDarkMode ? "dark-row" : "light-row")}
-        />
+        {isCalenderVisible ? (
+          <Calendar className="custom-calender"/>
+        ) : (
+          <>
+            <Tabs
+            onChange={setActiveTab}
+              defaultActiveKey="1"
+              type="card"
+              items={items.map((item) => ({
+                ...item,
+              }))}
+            />
+            {activeTab === "1" && (
+              <Input
+                placeholder="+ Add Task"
+                style={{ width: "250px", marginBottom: "15px" }}
+              />
+            )}
+            <Table<DataType>
+              columns={columns}
+              dataSource={data}
+              pagination={false}
+              rowClassName={() => (isDarkMode ? "dark-row" : "light-row")}
+            />
+          </>
+        )}
       </Card>
     </div>
   );
