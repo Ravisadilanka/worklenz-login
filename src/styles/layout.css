@@ -33,7 +33,7 @@
 
 .custom-card .ant-card-body p:hover {
     background-color: #edebf0!important;
-    box-sizing: border-box; /* Ensures padding is part of the element's size */
+    box-sizing: border-box; 
 }
 
 .custom-card {

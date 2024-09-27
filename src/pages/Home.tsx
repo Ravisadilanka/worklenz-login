@@ -89,13 +89,16 @@ const Home: React.FC = () => {
             type="primary"
             onClick={showDrawer}
           >
-            <Drawer title="Unread Notifications" onClose={onClose} open={open}>
-              <CreateProjectDrawer />
-            </Drawer>
             <EditOutlined />
             Create Project
           </Dropdown.Button>
         </div>
+
+        {/* Drawer should be rendered outside the Dropdown.Button */}
+        <Drawer title="Create Project" onClose={onClose} open={open}>
+          <CreateProjectDrawer />
+        </Drawer>
+
         <div style={{ display: "flex" }} className="body-container">
           <div
             style={{ width: "66%", paddingRight: "11px" }}

@@ -17,6 +17,7 @@ const InviteDrawer: React.FC = () => {
   return (
     <div>
       <Form
+      className="custom-form"
         form={form}
         layout="vertical"
         onFinish={onFinish}
