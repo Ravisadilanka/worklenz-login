@@ -420,7 +420,7 @@ const CreateProjectDrawer: React.FC = () => {
           layout="horizontal"
           name="projectManager"
           label="Project Manager"
-          rules={[{ required: true }, { type: "string" }]}
+          rules={[{ type: "string" }]}
         >
           <Dropdown
             menu={{ items }}

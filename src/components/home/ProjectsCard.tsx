@@ -1,8 +1,10 @@
-import { Button, Card, Rate, Segmented, Table, TableColumnsType } from "antd";
-import React from "react";
+import { Button, Card, Rate, Segmented, Table, TableColumnsType, Typography } from "antd";
+import React, { useEffect, useState } from "react";
 import { SyncOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+
+const { Text } = Typography
 
 interface DataType {
   key: string;
@@ -33,6 +35,23 @@ const data = [
 
 const ProjectsCard: React.FC = () => {
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
+  const [isShowFavourite, setIsShowFavourite] = useState<boolean>(false)
+  const [isSpinning, setIsSpinning] = useState<boolean>(false)
+
+  const handleChange = () => {
+    setIsSpinning(true)
+    setIsShowFavourite(!isShowFavourite)
+  }
+
+  useEffect(() => {
+    if (isSpinning) {
+      setTimeout(() => {
+        setIsSpinning(false);
+      }, 500);
+    }
+
+  }, [isShowFavourite, isSpinning])
+
   return (
     <div style={{ width: "100%", paddingTop: "11px" }}>
       <Card
@@ -46,20 +65,38 @@ const ProjectsCard: React.FC = () => {
                 backgroundColor: `${isDarkMode ? "black" : "white"}`,
               }}
             >
-              <SyncOutlined />
+              <SyncOutlined spin={isSpinning} />
             </Button>
-            <Segmented<string> options={["Recent", "Favorites"]} />
+            <Segmented<string> options={["Recent", "Favorites"]} onChange={handleChange}/>
           </div>
         }
         style={{ backgroundColor: `${isDarkMode ? "black" : "white"}` }}
       >
-        <Table<DataType>
+        {isShowFavourite ? 
+        <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "10px",
+        }}
+      >
+        <img
+          src="https://app.worklenz.com/assets/images/empty-box.webp"
+          alt="Empty Image"
+          width={64}
+          style={{ filter: "grayscale(1)" }}
+        />
+        <Text type="secondary">You have not assigned to any project yet.</Text>
+      </div>
+        : (<Table<DataType>
           columns={columns}
           dataSource={data}
           pagination={false}
           showHeader={false}
           rowClassName={() => (isDarkMode ? "dark-row" : "light-row")}
-        />
+        />)}
       </Card>
     </div>
   );
